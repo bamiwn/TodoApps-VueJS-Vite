@@ -1,0 +1,81 @@
+// PROPERTIES
+$color: #a6e3e9;
+$colorHover: #71c9ce;
+
+$font: 'Raleway', sans-serif;
+
+$bg: url('../assets/img/bg.png');
+
+// UTILITIES
+@for $i from 0 through 100 {
+  .mr-#{$i} {
+    margin-right: #{$i}px;
+  }
+  .ml-#{$i} {
+    margin-left: #{$i}px;
+  }
+  .mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+  .mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+}
+
+// MY FRONTEND CONFIGURATION ================================================
+
+// IT'S GLOBAL
+body {
+  font-family: $font;
+}
+
+footer {
+  color: white;
+  height: 70px;
+  width: 100%;
+  margin-top: 400px;
+}
+
+.color {
+  color: $color !important;
+}
+
+.bg-color {
+  color: white;
+  font-weight: 500;
+  background-color: $color !important;
+}
+
+.bg-color:hover {
+  color: white;
+  background-color: $colorHover !important;
+}
+
+// C_TODOCARD
+
+[name='todo'] {
+  padding: 100px 0 0;
+  background-image: $bg;
+
+  [name='card-todo-task'] {
+    border-radius: 17px;
+
+    [name='input-task'] textarea {
+      height: 120px;
+      width: 100%;
+    }
+
+    [type='checkbox'] {
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    [name='destroy'] {
+      width: 45px;
+      height: 45px;
+      border-radius: 100px;
+      margin: 20px 0 15px 15px;
+    }
+  }
+}
