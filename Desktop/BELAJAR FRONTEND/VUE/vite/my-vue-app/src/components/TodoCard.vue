@@ -12,6 +12,7 @@
                 <button v-show="taskDescription" @click.prevent="create()" class="btn bg-color mt-3">Here we Go!</button>
               </div>
               <hr />
+              <div v-if="taskFinished" class="alert alert-danger">{{ taskFinished }}</div>
               <div name="todo-items">
                 <div v-for="item in storageTask" :key="item.id" :id="item.id" :class="{ 'd-none': !item.id }" class="card mt-3">
                   <div class="card-body">
@@ -74,6 +75,24 @@ export default {
         this.storageTask[taskID - 1] = {};
       }
     },
+    changeAlert(value) {
+      this.taskFinished = value;
+    },
+  },
+  watch: {
+    storageTask: {
+      handler(newValue, oldValue) {
+        console.log(oldValue);
+      },
+      deep: true,
+    },
+    taskDescription(newValue, oldValue) {
+      console.log(oldValue);
+    },
+  },
+  mounted() {
+    // this.taskFinished = true;
+    this.changeAlert(true);
   },
 };
 </script>

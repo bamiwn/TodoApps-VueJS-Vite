@@ -1,3 +1,17 @@
+<script>
+import { useAuthStore } from './store/auth.js';
+import { useRouter } from 'vue-router';
+
+export default {
+  setup() {
+    const auth = useAuthStore();
+    return {
+      auth,
+    };
+  },
+};
+</script>
+
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -9,6 +23,12 @@
           <router-link class="nav-link" to="/">Home</router-link>
           <router-link class="nav-link" to="/about">About</router-link>
           <router-link class="nav-link" to="/todo-apps">Todo Apps</router-link>
+          <router-link class="nav-link" to="/todo-pinia">Todo Pinia</router-link>
+          <router-link class="nav-link" to="/users">Users</router-link>
+          <router-link v-if="!auth.loggedIn" class="nav-link" to="/login">Login</router-link>
+          <li v-else class="nav-item">
+            <a @click.prevent="logout" href="#" class="nav-link">Logout</a>
+          </li>
         </div>
       </div>
     </div>
